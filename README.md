@@ -1,3 +1,7 @@
+LIBFT CHECKER
+=============
+```
 mv libftcheck.c your_sources
-gcc *.c\n
+gcc *.c
 ./a.out
+```
