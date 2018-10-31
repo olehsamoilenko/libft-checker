@@ -7,6 +7,6 @@ gcc *.c
 ./a.out
 ```
 ------------
-Correction log
+Correction log (❌- error, ⚠️- warning)
 =====
-[dvdovenk](https://profile.intra.42.fr/users/dvdovenk): 5 errors, 8 warnings
+[dvdovenk](https://profile.intra.42.fr/users/dvdovenk): ❌❌❌❌❌⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
