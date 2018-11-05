@@ -12,6 +12,7 @@
 
 #include "libft.h"
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <errno.h>
@@ -372,7 +373,7 @@ void	strncat_test(void)
 
 void	strlcat_test(void)
 {
-	struct example
+	/*struct example
 	{
 		char *dst;
 		char *src;
@@ -398,7 +399,7 @@ void	strlcat_test(void)
 		if (strcmp(s1, s2) != 0 || r1 != r2)
 			printf("     Fail! ft_strlcat('%s', '%s'): '%s' = %i <=> '%s' = %i\n",
 			test[i].dst, test[i].src, s1, r1, s2, r2);
-	}
+	}*/
 }
 
 void	strchr_test(void)
@@ -465,7 +466,7 @@ void	strstr_test(void)
 
 void	strnstr_test(void)
 {
-	struct example
+	/*struct example
 	{
 		char	*s1;
 		char	*s2;
@@ -493,7 +494,7 @@ void	strnstr_test(void)
 		if (strequ(r1, r2) == 0)
 			printf("     Fail! ft_strnstr('%s', '%s', %i): '%s' <=> '%s'\n",
 			test[i].s1, test[i].s2, test[i].n, r2, r1);
-	}
+	}*/
 }
 
 void	strcmp_test(void)
@@ -574,6 +575,10 @@ void	atoi_test(void)
 						"++20",
 						"--2",
 						"\r\f\v\t\n 567 567 ",
+						0
+					};
+
+	char *test2[] =	{
 						"922337203685477580",
 						"-922337203685477580",
 						"9223372036854775807",
@@ -590,6 +595,12 @@ void	atoi_test(void)
 	{
 		if (atoi(test[i]) != ft_atoi(test[i]))
 			printf("     Fail! ft_atoi('%s'): %d <=> %d\n", test[i], ft_atoi(test[i]), atoi(test[i]));
+	}
+	i = -1;
+	while (test2[++i])
+	{
+		if (atoi(test[i]) != ft_atoi(test[i]))
+			printf("     Warning! ft_atoi('%s'): %d <=> %d\n", test[i], ft_atoi(test[i]), atoi(test[i]));
 	}
 }
 
@@ -824,7 +835,9 @@ void	strequ_test(void)
 								"This is test string1", "This is test string", 0,
 								"This is test string", "This is test string1", 0,
 								"\220This", "\220This", 1,
-								"\220This", "\222This", 0,
+								"\220This", "\222This", 0
+							};
+	struct example test2[] = {
 								NULL, "", 0,
 								"", NULL, 0,
 								NULL, NULL, 1
@@ -837,6 +850,15 @@ void	strequ_test(void)
 		if (r != test[i].res)
 			printf("     Fail! ft_strequ('%s', '%s'): %i <=> %i\n",
 				test[i].s1, test[i].s2, r, test[i].res);
+	}
+	count = sizeof(test2) / sizeof(test2[0]);
+	i = -1;
+	while (++i < count)
+	{
+		int r = ft_strequ(test2[i].s1, test2[i].s2);
+		if (r != test2[i].res)
+			printf("     Warning! ft_strequ('%s', '%s'): %i <=> %i\n",
+				test2[i].s1, test2[i].s2, r, test2[i].res);
 	}
 }
 
@@ -854,7 +876,9 @@ void	strnequ_test(void)
 								"This is test string1", "This is test string", 19, 1,
 								"This is test string", "This is test string1", 20, 0,
 								"\220This ", "\220This", 3, 1,
-								"\220This ", "\222This", 5, 0,
+								"\220This ", "\222This", 5, 0
+							};
+	struct example test2[] =	{
 								NULL, "", 1, 0,
 								"", NULL, 1, 0,
 								NULL, NULL, 5, 1
@@ -867,6 +891,15 @@ void	strnequ_test(void)
 		if (r != test[i].res)
 			printf("     Fail! ft_strnequ('%s', '%s', %i): %i <=> %i\n",
 				test[i].s1, test[i].s2, test[i].len, r, test[i].res);
+	}
+	count = sizeof(test2) / sizeof(test2[0]);
+	i = -1;
+	while (++i < count)
+	{
+		int r = ft_strnequ(test2[i].s1, test2[i].s2, test2[i].len);
+		if (r != test2[i].res)
+			printf("     Warning! ft_strnequ('%s', '%s', %i): %i <=> %i\n",
+				test2[i].s1, test2[i].s2, test2[i].len, r, test2[i].res);
 	}
 }
 
@@ -908,7 +941,9 @@ void	strjoin_test(void)
 								"abc", "abc", "abcabc",
 								"", "abc", "abc",
 								"abc", "", "abc",
-								"", "", "",
+								"", "", ""
+							};
+	struct example test2[] =	{
 								NULL, "abc", "abc",
 								"abc", NULL, "abc",
 								NULL, NULL, NULL
@@ -921,6 +956,15 @@ void	strjoin_test(void)
 		if (strequ(r, test[i].res) != 1)
 			printf("     Fail! ft_strjoin('%s', '%s'): '%s' <=> '%s'\n",
 			test[i].s1, test[i].s2, r, test[i].res);
+	}
+	count = sizeof(test2) / sizeof(test2[0]);
+	i = -1;
+	while (++i < count)
+	{
+		char *r = ft_strjoin(test2[i].s1, test2[i].s2);
+		if (strequ(r, test2[i].res) != 1)
+			printf("     Warning! ft_strjoin('%s', '%s'): '%s' <=> '%s'\n",
+			test2[i].s1, test2[i].s2, r, test2[i].res);
 	}
 }
 
@@ -1063,21 +1107,6 @@ void	putstr_test(void)
 void	putendl_test(void)
 {
 	ft_putendl("PUTENDL TESTING...");
-}
-
-void	putnbr_test(void)
-{
-	ft_putstr("     TEST1: -2147483648 ");
-	ft_putnbr(-2147483648);
-	ft_putstr("\n     TEST2: 2147483647 ");
-	ft_putnbr(2147483647);
-	ft_putstr("\n     TEST3: -2147 ");
-	ft_putnbr(-2147);
-	ft_putstr("\n     TEST4: 0 ");
-	ft_putnbr(0);
-	ft_putstr("\n     TEST5: 1232147 ");
-	ft_putnbr(1232147);
-	ft_putstr("\n");
 }
 
 void	putchar_fd_test(void)
@@ -1311,11 +1340,10 @@ int		main(void)
 	putchar_test();
 	putstr_test();
 	putendl_test();
-	printf("PUTNBR TESTING...\n"); putnbr_test();
 	printf("PUTCHAR_FD TESTING...\n"); putchar_fd_test();
 	printf("PUTSTR_FD TESTING...\n"); putstr_fd_test();
 	printf("PUTENDl_FD TESTING...\n"); putendl_fd_test();
-	printf("PUTNBR_FD TESTING...\n"); putnbr_fd_test();
+	printf("PUTNBR, PUTNBR_FD TESTING...\n"); putnbr_fd_test();
 	printf("Bonus Part\n");
 	printf("LSTNEW TESTING...\n"); lstnew_test();
 	printf("LSTADD TESTING...\n"); lstadd_test();
