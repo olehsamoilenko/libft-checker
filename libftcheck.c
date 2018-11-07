@@ -6,7 +6,7 @@
 /*   By: rmalyavc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 17:19:50 by rmalyavc          #+#    #+#             */
-/*   Updated: 2017/11/21 17:37:24 by rmalyavc         ###   ########.fr       */
+/*   Updated: 2018/11/07 16:37:13 by osamoile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -373,7 +373,7 @@ void	strncat_test(void)
 
 void	strlcat_test(void)
 {
-	/*struct example
+	struct example
 	{
 		char *dst;
 		char *src;
@@ -399,7 +399,7 @@ void	strlcat_test(void)
 		if (strcmp(s1, s2) != 0 || r1 != r2)
 			printf("     Fail! ft_strlcat('%s', '%s'): '%s' = %i <=> '%s' = %i\n",
 			test[i].dst, test[i].src, s1, r1, s2, r2);
-	}*/
+	}
 }
 
 void	strchr_test(void)
@@ -466,7 +466,7 @@ void	strstr_test(void)
 
 void	strnstr_test(void)
 {
-	/*struct example
+	struct example
 	{
 		char	*s1;
 		char	*s2;
@@ -494,7 +494,7 @@ void	strnstr_test(void)
 		if (strequ(r1, r2) == 0)
 			printf("     Fail! ft_strnstr('%s', '%s', %i): '%s' <=> '%s'\n",
 			test[i].s1, test[i].s2, test[i].n, r2, r1);
-	}*/
+	}
 }
 
 void	strcmp_test(void)
